@@ -10,5 +10,12 @@ class WatchAPIView(APIView):
         w = Watch.objects.all()
         return Response({'Посты': WatchSerializers(w,many=True).data})
 
+    def post(self, request):
+        serializer = WatchSerializers(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response({'Новый пост': serializer.data})
+
+
 
 

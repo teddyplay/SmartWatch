@@ -1,5 +1,7 @@
 from rest_framework import serializers
 
+from watch.models import Watch
+
 
 class WatchSerializers(serializers.Serializer):
     name = serializers.CharField(max_length=500)
@@ -9,3 +11,11 @@ class WatchSerializers(serializers.Serializer):
     description = serializers.CharField()
     price = serializers.IntegerField(default=0)
     cat_id_id = serializers.IntegerField()
+
+
+    def create(self, validated_data):
+        return Watch.objects.create(**validated_data)
+
+
+
+
