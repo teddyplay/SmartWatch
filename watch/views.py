@@ -1,27 +1,35 @@
-import generics as generics
 from django.shortcuts import render
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from watch.models import  Watch
 from watch.serializers import WatchSerializers
-from rest_framework import generics
+from rest_framework import generics, viewsets
 
 
 
-class WatchAPIList(generics.ListCreateAPIView):
+
+
+class WatchViewSet(viewsets.ModelViewSet):
     queryset = Watch.objects.all()
     serializer_class = WatchSerializers
 
 
-class WatchAPIUpdate(generics.UpdateAPIView):
-    queryset = Watch.objects.all()
-    serializer_class = WatchSerializers
-
-
-class WatchAPIDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Watch.objects.all()
-    serializer_class = WatchSerializers
+# """-------------------------------------------"""
+# class WatchAPIList(generics.ListCreateAPIView):
+#     queryset = Watch.objects.all()
+#     serializer_class = WatchSerializers
+#
+#
+# class WatchAPIUpdate(generics.UpdateAPIView):
+#     queryset = Watch.objects.all()
+#     serializer_class = WatchSerializers
+#
+#
+# class WatchAPIDetailView(generics.RetrieveUpdateDestroyAPIView):
+#     queryset = Watch.objects.all()
+#     serializer_class = WatchSerializers
+# """--------------------------------------------"""
 # class WatchAPIView(APIView):
 #     def get(self, request):
 #         w = Watch.objects.all()
